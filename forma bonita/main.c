@@ -34,5 +34,39 @@ int main(int argc, char* argv[]){
 	Mat* X = crearMatriz(0,0,NULL);
 	Mat* Y = crearMatriz(0,0,NULL);
 	Mat* Z = crearMatriz(0,0,NULL);
+	
+	borraMatriz(&A);
+	borraMatriz(&B);
+	borraMatriz(&C);
+	borraMatriz(&D);
+	borraMatriz(&E);
+	borraMatriz(&F);
+	borraMatriz(&G);
+	borraMatriz(&H);
+	borraMatriz(&I);
+	borraMatriz(&J);
+	borraMatriz(&K);
+	borraMatriz(&L);
+	borraMatriz(&M);
+	borraMatriz(&N);
+	borraMatriz(&O);
+	borraMatriz(&P);
+	borraMatriz(&Q);
+	borraMatriz(&R);
+	borraMatriz(&S);
+	borraMatriz(&T);
+	borraMatriz(&U);
+	borraMatriz(&V);
+	borraMatriz(&W);
+	borraMatriz(&X);
+	borraMatriz(&Y);
+	borraMatriz(&Z);
+		
+	
+		
+	scanf("%s",buffer);
+	while(strcmp(buffer,"exit")!=0){
+		printf(".");
+	}
 	return 0;
 }
