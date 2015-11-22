@@ -9,7 +9,7 @@ typedef struct matriz{
 }M;
 
 
-M* crearMatriz(int dimension,int lineaN,int lineaM, int** columna){
+M* crearMatriz(int lineaN,int lineaM, int** columna){
 	M* matriz = malloc(sizeof(M));
 	matriz->f=lineaN;
 	matriz->c= lineaM;
@@ -20,24 +20,27 @@ M* crearMatriz(int dimension,int lineaN,int lineaM, int** columna){
 M* leerMatriz(char* entrada){
 	FILE* archivoEntrada = fopen(entrada,"r");
 	int lineaN,lineaM;
-	int dim;
 	int i=0;
 	int j=0;
 	int temporal;
+	
 	fscanf(archivoEntrada,"%d\n%d\n",&lineaN,&lineaM);
-	dim = lineaN*lineaM;	
-	int* fila = malloc(dim*sizeof(int));
-	int** columna = malloc(lineaN*sizeof(int*));
 
-	while(fscanf(archivoEntrada,"%d ",&temporal)!=EOF){
-		fila[i] = temporal;	
-		if((i %(lineaM)) == 0){	
-			columna[j] =	&fila[i];
-			j++;
-		}	
-		i++;
+	int **matrizPre = (int **)malloc(sizeof(int *)*lineaN);
+	for (i=0;i<lineaN;i++){
+		matrizPre[i] = (int *) malloc (sizeof(int)*lineaM);
 	}
-	M* matriz = crearMatriz(dim,lineaN,lineaM,columna);
+
+	i=0;
+	while(fscanf(archivoEntrada,"%d ",&temporal)!=EOF){
+		matrizPre[i][j]=temporal;	
+		j++;
+		if((j%lineaM)==0){
+			i++;
+			j=0;		
+		}
+	}
+	M* matriz = crearMatriz(lineaN,lineaM,matrizPre);
 	fclose(archivoEntrada);
 	return matriz;
 }
