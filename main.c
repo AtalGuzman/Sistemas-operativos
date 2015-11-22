@@ -47,12 +47,25 @@ void escribirMatriz(M* matriz, char* nombre){
 		}	
 		fprintf(salida,"\n");
 	}
+	fclose(salida);
 }
 
-main(int argc, char* argv[]){
+void mostrarMatriz(M* matriz){
 	int i,j;
+	for(i=0;i<matriz->f;i++){
+		for(j=0;j<matriz->c;j++){
+			printf("%d ",matriz->m[i][j]);
+		}	
+		printf("\n");
+	}
+}
+main(int argc, char* argv[]){
+
 	M* matriz=leerMatriz(argv[1]);
 
 	escribirMatriz(matriz,"G");
+
+	M* matriz2=leerMatriz("G");
+	mostrarMatriz(matriz2);
 	return 0;
 }
