@@ -1,0 +1,9 @@
+#ifndef __ARCHIVOS_H__
+#define __ARCHIVOS_H__
+
+M* leerMatriz(char* entrada);
+void escribirMatriz(M* matriz, char* nombre);
+void mostrarMatriz(M* matriz);
+void borrarMatriz(M** matriz);
+M* crearMatriz(int lineaN,int lineaM,int** columna);
+#endif

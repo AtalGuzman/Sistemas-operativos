@@ -1,17 +1,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include "struct.h"
 
-
-M* crearMatriz(int dimension,int lineaN,int lineaM, int** columna){
-	M* matriz = malloc(sizeof(M));
+Mat* crearMatriz(int lineaN,int lineaM, int** columna){
+	Mat* matriz = malloc(sizeof(M));
 	matriz->f=lineaN;
 	matriz->c= lineaM;
 	matriz->m= columna;
 	return matriz;
 }
 
-M* leerMatriz(char* entrada){
+Mat* leerMatriz(char* entrada){
 	FILE* archivoEntrada = fopen(entrada,"r");
 	int lineaN,lineaM;
 	int i=0;
@@ -34,12 +34,12 @@ M* leerMatriz(char* entrada){
 			j=0;		
 		}
 	}
-	M* matriz = crearMatriz(lineaN,lineaM,matrizPre);
+	Mat* matriz = crearMatriz(lineaN,lineaM,matrizPre);
 	fclose(archivoEntrada);
 	return matriz;
 }
 
-void escribirMatriz(M* matriz, char* nombre){
+void escribirMatriz(Mat* matriz, char* nombre){
 	int i,j;
 	FILE* salida=fopen(nombre,"w");
 	fprintf(salida,"%d\n%d\n",matriz->f,matriz->c);
@@ -52,7 +52,7 @@ void escribirMatriz(M* matriz, char* nombre){
 	fclose(salida);
 }
 
-void mostrarMatriz(M* matriz){
+void mostrarMatriz(Mat* matriz){
 	int i,j;
 	if(matriz==NULL){
 		printf("[NULL]\n");	
@@ -67,7 +67,7 @@ void mostrarMatriz(M* matriz){
 	}
 }
 
-void borrarMatriz(M** matriz){
+void borrarMatriz(Mat** matriz){
 	int i;
 	if(*matriz!=NULL){
 		for(i =0; i<(*matriz)->f;i++){
@@ -79,15 +79,3 @@ void borrarMatriz(M** matriz){
 	}
 }
 
-int main(int argc, char* argv[]){
-	M* matriz=leerMatriz(argv[1]);
-	printf("FILA: %d, Columna %d\n",matriz->f,matriz->c);
-	mostrarMatriz(matriz);
-	borrarMatriz(&matriz);
-	mostrarMatriz(matriz);	
-	//M* matriz2 = NULL;
-	//M* matriz2=leerMatriz("G");
-	//borrarMatriz(matriz2);
-	//mostrarMatriz(matriz2);
-	return 0;
-}

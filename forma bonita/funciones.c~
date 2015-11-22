@@ -4,7 +4,7 @@
 #include "struct.h"
 #include "funciones.h"
 
-void suma(Mat* a, Mat* b, Mat* c){
+void suma(M* a, M* b, M* c){
 	
 	if((a->f != b->f) || (a->c != b->c)){
 		printf("Liberar\n");
@@ -40,7 +40,7 @@ void suma(Mat* a, Mat* b, Mat* c){
 	return;
 }
 
-void resta(Mat* a, Mat* b, Mat* c){
+void resta(M* a, M* b, M* c){
 	
 	if((a->f != b->f) || (a->c != b->c)){
 		printf("Liberar\n");
@@ -76,7 +76,7 @@ void resta(Mat* a, Mat* b, Mat* c){
 	return;
 }
 
-void multiplicacion_m(Mat* a, Mat* b, Mat* c){
+void multiplicacion_m(M* a, M* b, M* c){
 	
 	if(a->c != b->f){
 		printf("Liberar\n");
@@ -116,7 +116,7 @@ void multiplicacion_m(Mat* a, Mat* b, Mat* c){
 	return;
 }
 
-void multiplicacion_c(Mat* a, Mat* c, int k){
+void multiplicacion_c(M* a, M* c, int k){
 	
 	c->f = a->f;
 	c->c = a->c;
@@ -145,7 +145,7 @@ void multiplicacion_c(Mat* a, Mat* c, int k){
 	return;
 }
 
-void transpuesta(Mat* a, Mat* c){
+void transpuesta(M* a, M* c){
 	
 	c->f = a->c;
 	c->c = a->f;

@@ -1,0 +1,38 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include "struct.h"
+#include "archivos.h"
+#include "funciones.h"
+
+int main(int argc, char* argv[]){
+	char buffer[255];
+	/*Se inicializan todas las matrices en valores nulos*/
+	M* A = crearMatriz(0,0,NULL);
+	M* B = crearMatriz(0,0,NULL);
+	M* C = crearMatriz(0,0,NULL);
+	M* D = crearMatriz(0,0,NULL);
+	M* E = crearMatriz(0,0,NULL);
+	M* F = crearMatriz(0,0,NULL);
+	M* G = crearMatriz(0,0,NULL);
+	M* H = crearMatriz(0,0,NULL);
+	M* I = crearMatriz(0,0,NULL);
+	M* J = crearMatriz(0,0,NULL);
+	M* K = crearMatriz(0,0,NULL);
+	M* L = crearMatriz(0,0,NULL);
+	M* M = crearMatriz(0,0,NULL);
+	M* N = crearMatriz(0,0,NULL);
+	M* O = crearMatriz(0,0,NULL);
+	M* P = crearMatriz(0,0,NULL);
+	M* Q = crearMatriz(0,0,NULL);
+	M* R = crearMatriz(0,0,NULL);
+	M* S = crearMatriz(0,0,NULL);
+	M* T = crearMatriz(0,0,NULL);
+	M* U = crearMatriz(0,0,NULL);
+	M* V = crearMatriz(0,0,NULL);
+	M* W = crearMatriz(0,0,NULL);
+	M* X = crearMatriz(0,0,NULL);
+	M* Y = crearMatriz(0,0,NULL);
+	M* Z = crearMatriz(0,0,NULL);
+	return 0;
+}
