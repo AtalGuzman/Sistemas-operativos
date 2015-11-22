@@ -2,7 +2,13 @@
 #include <stdio.h>
 #include <string.h>
 
-int** leerMatriz(char* entrada){
+typedef struct matriz{
+	int f;
+	int c;
+	int ** m;
+}M;
+
+M leerMatriz(char* entrada){
 	FILE* archivoEntrada = fopen(entrada,"r");
 	int lineaN,lineaM;
 	int dim;
@@ -14,22 +20,37 @@ int** leerMatriz(char* entrada){
 	int* fila = malloc(dim*sizeof(int));
 	int** columna = malloc(lineaN*sizeof(int*));
 
-
 	while(fscanf(archivoEntrada,"%d ",&temporal)!=EOF){
 		fila[i] = temporal;	
 		if((i %(lineaM)) == 0){	
 			columna[j] =	&fila[i];
+			printf("%d ",fila[i]);
 			j++;
 		}	
 		i++;
+		printf("\n");
 	}
 	
+	M matriz;
+	matriz.f=i/lineaN;
+	matriz.c=j;
+	matriz.m= columna;
 	fclose(archivoEntrada);
-	return columna;
+	return matriz;
 }
 
 main(int argc, char* argv[]){
-	int**matriz=leerMatriz(argv[1]);
+	int i,j;
+	M matriz=leerMatriz(argv[1]);
+	printf("Filas: %d , columnas %d\n", matriz.f,matriz.c);
+
+	for(i=0;i<matriz.f;i++){
+		for(j=0;j<matriz.c;j++){
+			
+			printf("%d ",matriz.m[j][i]);
+		}	
+		printf("\n");
+	}
 	return 0;
 }
 
