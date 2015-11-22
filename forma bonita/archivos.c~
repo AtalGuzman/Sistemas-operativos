@@ -2,6 +2,12 @@
 #include <stdio.h>
 #include <string.h>
 
+typedef struct matriz{
+	int f;
+	int c;
+	int ** m;
+}M;
+
 
 M* crearMatriz(int dimension,int lineaN,int lineaM, int** columna){
 	M* matriz = malloc(sizeof(M));
