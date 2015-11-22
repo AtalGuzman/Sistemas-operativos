@@ -8,7 +8,7 @@ typedef struct matriz{
 	int ** m;
 }M;
 
-M leerMatriz(char* entrada){
+M* leerMatriz(char* entrada){
 	FILE* archivoEntrada = fopen(entrada,"r");
 	int lineaN,lineaM;
 	int dim;
@@ -24,34 +24,35 @@ M leerMatriz(char* entrada){
 		fila[i] = temporal;	
 		if((i %(lineaM)) == 0){	
 			columna[j] =	&fila[i];
-			printf("%d ",fila[i]);
 			j++;
 		}	
 		i++;
-		printf("\n");
 	}
 	
-	M matriz;
-	matriz.f=i/lineaN;
-	matriz.c=j;
-	matriz.m= columna;
+	M* matriz = malloc(sizeof(M));
+	matriz->f=lineaN;
+	matriz->c= lineaM;
+	matriz->m= columna;
 	fclose(archivoEntrada);
 	return matriz;
 }
 
-main(int argc, char* argv[]){
+void escribirMatriz(M* matriz, char* nombre){
 	int i,j;
-	M matriz=leerMatriz(argv[1]);
-	printf("Filas: %d , columnas %d\n", matriz.f,matriz.c);
-
-	for(i=0;i<matriz.f;i++){
-		for(j=0;j<matriz.c;j++){
-			
-			printf("%d ",matriz.m[j][i]);
+	FILE* salida=fopen(nombre,"w");
+	fprintf(salida,"%d\n%d\n",matriz->f,matriz->c);
+	for(i=0;i<matriz->f;i++){
+		for(j=0;j<matriz->c;j++){
+			fprintf(salida,"%d ",matriz->m[i][j]);
 		}	
-		printf("\n");
+		fprintf(salida,"\n");
 	}
-	return 0;
 }
 
+main(int argc, char* argv[]){
+	int i,j;
+	M* matriz=leerMatriz(argv[1]);
 
+	escribirMatriz(matriz,"G");
+	return 0;
+}
