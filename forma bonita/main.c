@@ -45,7 +45,7 @@ int main(int argc, char* argv[]){
 	while(strcmp(s1,"exit")!=0){
 		fgets(s1,50,stdin);
 		ptr = strtok( s1, s2 );   
-		if(strcmp(ptr,"load")==0)
+		if(strcmp(s1,"load")==0)
 		{
 		//Hacer un case con cada una de las matrices
 		//Ahí se guarda con el parámetros de la entrada
@@ -164,7 +164,7 @@ int main(int argc, char* argv[]){
 				}
 				else if(strcmp(ptr,"O")==0){
 					if((ptr = strtok(NULL," \n"))!=NULL){
-						C = leerMatriz(ptr);					
+						O = leerMatriz(ptr);					
 					}
 					else{
 						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
@@ -488,7 +488,436 @@ int main(int argc, char* argv[]){
 		else if(strcmp(s1,"save")==0)
 		{
 			printf("Se guardó la matriz \n");
-			//escribirMatriz(B,"E");		
+			if((ptr = strtok(NULL," \n"))!=NULL){
+				if(strcmp(ptr,"A")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(A,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"B")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(B,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"C")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(C,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"D")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(D,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"E")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(E,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"F")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(F,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"G")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(G,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"H")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(H,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"I")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(I,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"J")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(J,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"K")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(K,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"L")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(L,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"M")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(M,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"N")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(N,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"O")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(O,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"P")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(P,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}				
+				}
+				else if(strcmp(ptr,"Q")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(Q,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"R")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(R,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"S")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(S,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}			
+				else if(strcmp(ptr,"T")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(T,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"U")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(U,ptr);
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"V")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(V,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"W")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(W,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"X")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(X,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"Y")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(Y,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"Z")==0){
+					if((ptr = strtok(NULL," \n"))!=NULL){
+						escribirMatriz(Z,ptr);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else{
+					printf("Error: El nombre de la matriz debe ser una letra mayúscula, excepto la Ñ\n");
+				}
+			}
+			else{
+				printf("Error: faltan parámetros \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");		
+			}				
+		}
+		else if(strcmp(s1,"clear")==0){
+			if((ptr = strtok(NULL," \n"))!=NULL){
+				if(strcmp(ptr,"A")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&A);				
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"B")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&B);		
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"C")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&C);		
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"D")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&D);			
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"E")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&E);			
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"F")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&F);			
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"G")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&G);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"H")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&H);				
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"I")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&I);			
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"J")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&J);				
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"K")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&K);				
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"L")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&L);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"M")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&M);			
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"N")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&N);
+}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"O")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&O);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"P")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&P);
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}				
+				}
+				else if(strcmp(ptr,"Q")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&Q);				
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"R")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&R);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"S")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&S);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}			
+				else if(strcmp(ptr,"T")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&T);			
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"U")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&U);
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"V")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&V);			
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"W")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&W);					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"X")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&X);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"Y")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&Y);
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else if(strcmp(ptr,"Z")==0){
+					if((ptr = strtok(NULL," \n"))==NULL){
+						borrarMatriz(&Z);					
+					}
+					else{
+						printf("Error: Falta parámetro de entrada \nUso: load <Nombre matriz> <Nombre archivo>.txt\n");				
+					}
+				}
+				else{
+					printf("Error: El nombre de la matriz debe ser una letra mayúscula, excepto la Ñ\n");
+				}
+			}
 		}
 	}
 	printf("Bye!\n");
