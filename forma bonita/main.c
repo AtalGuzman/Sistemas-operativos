@@ -919,6 +919,9 @@ int main(int argc, char* argv[]){
 				}
 			}
 		}
+		else if(strcmp(s1,"suma")==0){
+			printf("Suma\n");
+		}
 	}
 	printf("Bye!\n");
 	borrarMatriz(&A);

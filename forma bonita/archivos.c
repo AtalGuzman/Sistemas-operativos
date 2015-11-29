@@ -12,31 +12,36 @@ Mat* crearMatriz(int lineaN,int lineaM, int** columna){
 }
 
 Mat* leerMatriz(char* entrada){
-	FILE* archivoEntrada = fopen(entrada,"r");
-	int lineaN,lineaM;
-	int i=0;
-	int j=0;
-	int temporal;
+	FILE* archivoEntrada;
+	if((archivoEntrada = fopen(entrada,"r"))==NULL){
+		printf("Erro: Verifica la existencia del archivo. \n");
+	}
+	else{
+		int lineaN,lineaM;
+		int i=0;
+		int j=0;
+		int temporal;
 	
-	fscanf(archivoEntrada,"%d\n%d\n",&lineaN,&lineaM);
+		fscanf(archivoEntrada,"%d\n%d\n",&lineaN,&lineaM);
 
-	int **matrizPre = (int **)malloc(sizeof(int *)*lineaN);
-	for (i=0;i<lineaN;i++){
-		matrizPre[i] = (int *) malloc (sizeof(int)*lineaM);
-	}
-
-	i=0;
-	while(fscanf(archivoEntrada,"%d ",&temporal)!=EOF){
-		matrizPre[i][j]=temporal;	
-		j++;
-		if((j%lineaM)==0){
-			i++;
-			j=0;		
+		int **matrizPre = (int **)malloc(sizeof(int *)*lineaN);
+		for (i=0;i<lineaN;i++){
+			matrizPre[i] = (int *) malloc (sizeof(int)*lineaM);
 		}
+
+		i=0;
+		while(fscanf(archivoEntrada,"%d ",&temporal)!=EOF){
+			matrizPre[i][j]=temporal;	
+			j++;
+			if((j%lineaM)==0){
+				i++;
+				j=0;		
+			}
+		}
+		Mat* matriz = crearMatriz(lineaN,lineaM,matrizPre);
+		fclose(archivoEntrada);
+		return matriz;
 	}
-	Mat* matriz = crearMatriz(lineaN,lineaM,matrizPre);
-	fclose(archivoEntrada);
-	return matriz;
 }
 
 void escribirMatriz(Mat* matriz, char* nombre){

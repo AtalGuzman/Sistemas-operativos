@@ -67,7 +67,6 @@ void mostrarMatriz(Mat* matriz){
 	}
 }
 
-void igualarMatriz
 void borrarMatriz(Mat** matriz){
 	int i;
 	if(*matriz!=NULL){
