@@ -1,7 +1,7 @@
 #ifndef __FUNCIONES_H__
 #define __FUNCIONES_H__
 
-void suma(Mat* a, Mat* b, Mat* c);
+Mat* suma(Mat* a, Mat* b, Mat* c);
 void resta(Mat* a, Mat* b, Mat* c);
 void multiplicacion_m(Mat* a, Mat* b, Mat* c);
 void multiplicacion_c(Mat* a, Mat* c, int k);

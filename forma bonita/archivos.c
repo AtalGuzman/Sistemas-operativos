@@ -2,85 +2,71 @@
 #include <stdio.h>
 #include <string.h>
 #include "struct.h"
+#include <unistd.h>
 
-Mat* crearMatriz(int lineaN,int lineaM, int** columna){
-	Mat* matriz = malloc(sizeof(Mat));
-	matriz->f=lineaN;
-	matriz->c= lineaM;
-	matriz->m= columna;
-	return matriz;
-}
-
-Mat* leerMatriz(char* entrada){
+int verificar(char* entrada){
 	FILE* archivoEntrada;
 	if((archivoEntrada = fopen(entrada,"r"))==NULL){
-		printf("Erro: Verifica la existencia del archivo. \n");
+		return 0;
+	}
+	close(archivoEntrada);
+	return 1;
+}
+
+int* leerMatriz(char* entrada){
+	FILE* archivoEntrada;
+	if((archivoEntrada = fopen(entrada,"r"))==NULL){
+		printf("Error: Verifica la existencia del archivo. \n");
 	}
 	else{
 		int lineaN,lineaM;
 		int i=0;
 		int j=0;
 		int temporal;
-	
 		fscanf(archivoEntrada,"%d\n%d\n",&lineaN,&lineaM);
-
-		int **matrizPre = (int **)malloc(sizeof(int *)*lineaN);
-		for (i=0;i<lineaN;i++){
-			matrizPre[i] = (int *) malloc (sizeof(int)*lineaM);
-		}
-
-		i=0;
+		int *matrizPre = malloc((lineaN*lineaM+2)*sizeof(int));
+		matrizPre[0] = lineaN;
+		matrizPre[1] = lineaM;
+		i=2;
 		while(fscanf(archivoEntrada,"%d ",&temporal)!=EOF){
-			matrizPre[i][j]=temporal;	
-			j++;
-			if((j%lineaM)==0){
-				i++;
-				j=0;		
-			}
+			matrizPre[i]=temporal;
+			i++;
 		}
-		Mat* matriz = crearMatriz(lineaN,lineaM,matrizPre);
 		fclose(archivoEntrada);
-		return matriz;
+
+		return matrizPre;
 	}
 }
 
-void escribirMatriz(Mat* matriz, char* nombre){
+void escribirMatriz(int* matriz, char* nombre){
 	int i,j;
 	FILE* salida=fopen(nombre,"w");
-	fprintf(salida,"%d\n%d\n",matriz->f,matriz->c);
-	for(i=0;i<matriz->f;i++){
-		for(j=0;j<matriz->c;j++){
-			fprintf(salida,"%d ",matriz->m[i][j]);
-		}	
-		fprintf(salida,"\n");
+	fprintf(salida,"%d\n%d\n",matriz[0],matriz[1]);
+	if(matriz==NULL){
+		printf("[NULL]\n");
+	}
+	else{
+		for(i=2;i<(matriz[0]*matriz[1])+2;i++){
+			fprintf(salida,"%d ",matriz[i]);
+			if((i%matriz[1])==1) fprintf(salida,"\n");
+		}
 	}
 	fclose(salida);
 }
 
-void mostrarMatriz(Mat* matriz){
-	int i,j;
+void mostrarMatriz(int* matriz){
+	int i;
 	if(matriz==NULL){
-		printf("[NULL]\n");	
+		printf("[NULL]\n");
 	}
 	else{
-		for(i=0;i<matriz->f;i++){
-			for(j=0;j<matriz->c;j++){
-				printf("%d ",matriz->m[i][j]);
-			}	
-			printf("\n");
+		for(i=2;i<(matriz[0]*matriz[1])+2;i++){
+				printf("%d ",matriz[i]);
+			if((i%matriz[1])==1) printf("\n");
 		}
 	}
 }
 
-void borrarMatriz(Mat** matriz){
-	int i;
-	if(*matriz!=NULL){
-		for(i =0; i<(*matriz)->f;i++){
-			free((*matriz)->m[i]);
-			(*matriz)->m[i]=NULL;		
-		}
-		free(*matriz);
-		*matriz=NULL;
-	}
+void borrarMatriz(int* matriz){
+	free(matriz);
 }
-

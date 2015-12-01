@@ -2,8 +2,8 @@
 BIN               := main
 CC                := gcc
 LINKER            := gcc
-C_SOURCES         := main.c archivos.c funciones.c
-C_OBJS            := main.o archivos.o funciones.o
+C_SOURCES         := main.c archivos.c
+C_OBJS            := main.o archivos.o
 C_FLAGS           := -c
 
 all: $(C_OBJS)

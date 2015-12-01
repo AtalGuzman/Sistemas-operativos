@@ -1,24 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include "struct.h"
-#include "funciones.h"
+#include "archivos.h"
 
 //RECIBE DOS PUNTEROS A MATRICES QUE SON LOS OPERANDOS
 // Y UN TERCERO QUE CONTENDRÁ EL RESULTADOS
-void suma(Mat* a, Mat* b, Mat* c){
+Mat* suma(Mat* a, Mat* b){
+	
+	
+	Mat * c = malloc(sizeof(Mat *));
 	if((a->f != b->f) || (a->c != b->c)){
-		printf("Liberar\n");
+
 		c = NULL;
 		free(c);
 		return;
 	}
-	
+
 	c->f = a->f;
 	c->c = a->c;
 	
 	c->m = (int **)malloc(sizeof(int *)*a->f);
 	
+
 	int i,j;
 	for (i=0;i<a->f;i++){
 		c->m[i] = (int *) malloc (sizeof(int)*a->c);
@@ -37,11 +42,18 @@ void suma(Mat* a, Mat* b, Mat* c){
 		}
 		printf("\n");
 	}
-	
-	return;
+
+	return c;
 }
 
-int main(int argc, char* argv[]){
+int main(int argc, char *argv[]) {
+	int numero;
+	int numero2;
 
+	read(STDIN_FILENO,&numero,sizeof(int));
+	read(STDIN_FILENO,&numero2,sizeof(int));
+	numero = numero+numero2;
+	write(STDOUT_FILENO,&numero,sizeof(int));
+	return 0;
 }
 

@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include "struct.h"
 #include "funciones.h"
 
-void suma(M* a, M* b, M* c){
+void suma(Mat* a, Mat* b, Mat* c){
 	
 	if((a->f != b->f) || (a->c != b->c)){
 		printf("Liberar\n");
@@ -40,7 +41,7 @@ void suma(M* a, M* b, M* c){
 	return;
 }
 
-void resta(M* a, M* b, M* c){
+void resta(Mat* a, Mat* b, Mat* c){
 	
 	if((a->f != b->f) || (a->c != b->c)){
 		printf("Liberar\n");
@@ -76,7 +77,7 @@ void resta(M* a, M* b, M* c){
 	return;
 }
 
-void multiplicacion_m(M* a, M* b, M* c){
+void multiplicacion_m(Mat* a, Mat* b, Mat* c){
 	
 	if(a->c != b->f){
 		printf("Liberar\n");
@@ -116,7 +117,7 @@ void multiplicacion_m(M* a, M* b, M* c){
 	return;
 }
 
-void multiplicacion_c(M* a, M* c, int k){
+void multiplicacion_c(Mat* a, Mat* c, int k){
 	
 	c->f = a->f;
 	c->c = a->c;
@@ -145,7 +146,7 @@ void multiplicacion_c(M* a, M* c, int k){
 	return;
 }
 
-void transpuesta(M* a, M* c){
+void transpuesta(Mat* a, Mat* c){
 	
 	c->f = a->c;
 	c->c = a->f;
