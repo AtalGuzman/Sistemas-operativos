@@ -12,8 +12,8 @@ int main(int argc, char* argv[]){
 	int pid;
 	int pipefd1[2];
 	int pipefd2[2];
-	pipe(pipefd1);
-	pipe(pipefd2);
+	//pipe(pipefd1);
+	//pipe(pipefd2);
 	/*Se inicializan todas las matrices en valores nulos*/
 	char *intruccion = malloc(50*sizeof(char));
 	int* A = malloc(sizeof(int));
@@ -989,8 +989,10 @@ int main(int argc, char* argv[]){
 				printf("Error: Las matrices deben ser de las mismas dimensiones\n");
 			}
 			else{
+			  pipe(pipefd1);
+			  pipe(pipefd2);
 			  pid = fork();
-
+			
 			  if (pid == 0) {
 			      int cantidadH,i,j;
 			      int* temp = malloc(sizeof(int));
@@ -1003,16 +1005,16 @@ int main(int argc, char* argv[]){
 			      dup2(pipefd1[ESCRIBIR],STDOUT_FILENO);
 			      dup2(pipefd2[LEER],STDIN_FILENO);
 			      execl("suma2","ls","-al",NULL);
-						free(matrizA);
-						free(matrizB);
-						free(temp);
+			      free(matrizA);
+				  free(matrizB);
+				  free(temp);
 			  }
 			  else {
 			      close(pipefd1[ESCRIBIR]); //solo puede leer en pipefd1
 			      close(pipefd2[LEER]); //solo puede escribir en pipefd2
 			      int cantidad = A[0]*A[1]+2+B[0]*B[1]+2;
 			      int k,l;
-			      int * temp = malloc(sizeof(cantidad));
+			      int * temp = malloc(sizeof(int)*cantidad);
 			      for ( k = 0; k < cantidad/2; k++) {
 			            temp[k]=A[k];
 			      }
@@ -1022,11 +1024,14 @@ int main(int argc, char* argv[]){
 			//agregar validaciones de tamaño
 			//Escribir la matriz 1 y matriz 2
 			      write(pipefd2[ESCRIBIR],&cantidad,sizeof(int));
-			      write(pipefd2[ESCRIBIR],temp,cantidad*sizeof(int));
+			      write(pipefd2[ESCRIBIR],temp,sizeof(int)*cantidad);
 			//Leer la matriz resultado
 			      read(pipefd1[LEER],&cantidad,sizeof(int));
-						B = (int*)realloc(B,cantidad);
-			      for(k =0;k<cantidad;k++) read(pipefd1[LEER],B+k,sizeof(int));
+			      int* solucion = (int*) malloc(sizeof(int)*cantidad);
+						//B = (int*)realloc(B,cantidad);
+			      for(k =0;k<cantidad;k++) read(pipefd1[LEER],solucion+k,sizeof(int));
+
+			      mostrarMatriz(solucion);
 			  	}
 			}
 		}

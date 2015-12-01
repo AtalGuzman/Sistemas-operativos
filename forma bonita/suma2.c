@@ -16,9 +16,7 @@ int main(int argc, char * argv[]){
 
   for(i=0;i<cantidadH/2;i++){
       matrizA[i] = temp[i];
-  }
-  for(j=0;j<cantidadH;j++){
-    matrizB[j] = temp[j];
+      matrizB[i] = temp[i+cantidadH/2];
   }
 
 //comenzar a multiplicar por constante
