@@ -1027,11 +1027,12 @@ int main(int argc, char* argv[]){
 			      write(pipefd2[ESCRIBIR],temp,sizeof(int)*cantidad);
 			//Leer la matriz resultado
 			      read(pipefd1[LEER],&cantidad,sizeof(int));
-			      int* solucion = (int*) malloc(sizeof(int)*cantidad);
+			      free(A);
+			      int* A = (int*) malloc(sizeof(int)*cantidad);
 						//B = (int*)realloc(B,cantidad);
-			      for(k =0;k<cantidad;k++) read(pipefd1[LEER],solucion+k,sizeof(int));
+			      for(k =0;k<cantidad;k++) read(pipefd1[LEER],A+k,sizeof(int));
 
-			      mostrarMatriz(solucion);
+			      mostrarMatriz(A);
 			  	}
 			}
 		}
