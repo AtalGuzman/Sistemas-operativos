@@ -4,17 +4,19 @@
 int main(int argc, char * argv[]){
 
   int cantidadH,i,j,h,suma;
-  int* temp = malloc(sizeof(int));
-  int* matrizA = malloc(sizeof(int));
-  int* matrizB = malloc(sizeof(int));
-  int* temp2 = malloc(sizeof(int));
+  
 //Leer la matriz 1 y matriz 2
   read(STDIN_FILENO,&cantidadH,sizeof(int));
 
-  read(STDIN_FILENO,temp,cantidadH*sizeof(int));
-  matrizA = malloc((cantidadH/2)*sizeof(int));
-  matrizB = malloc((cantidadH/2)*sizeof(int));
-  temp2 = malloc(matrizA[0]*matrizB[1]*sizeof(int));
+  int* temp = (int *)malloc(sizeof(int)*cantidadH);
+
+  for(i=0;i<cantidadH;i++){
+    read(STDIN_FILENO,&temp[i],sizeof(int)); //Se lee la matriz
+  }
+
+  int* matrizA = malloc((cantidadH/2)*sizeof(int));
+  int* matrizB = malloc((cantidadH/2)*sizeof(int));
+  int* temp2 = (int *)malloc(matrizA[0]*matrizB[1]*sizeof(int));
 
   for(i=0;i<cantidadH/2;i++){
       matrizA[i] = temp[i];
@@ -37,5 +39,9 @@ int main(int argc, char * argv[]){
 //Enviar la matriz resultado
   write(STDOUT_FILENO,&cantidadH,sizeof(int));
   for(i =0;i<cantidadH;i++) write(STDOUT_FILENO,temp2+i,sizeof(int));
+  free(temp);
+  free(matrizA);
+  free(matrizB);
+  free(temp2);
   return 0;
 }

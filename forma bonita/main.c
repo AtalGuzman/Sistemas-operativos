@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
-#include "struct.h"
 #include "archivos.h"
 
 #define LEER 0
@@ -1183,10 +1182,10 @@ int main(int argc, char* argv[]){
 			cont = 1;
 
 			if (pid == 0) {
-				int cantidadH,i,j;
+				/*int cantidadH,i,j;
 				int* temp = malloc(sizeof(int));
 				int* matrizA = malloc(sizeof(int));
-				int* matrizB = malloc(sizeof(int));
+				int* matrizB = malloc(sizeof(int));*/
 
 				close(pipefd1[LEER]); //Solo puede escribir en pipefd1
 				close(pipefd2[ESCRIBIR]); //solo puede leer en pipefd2
@@ -1199,10 +1198,12 @@ int main(int argc, char* argv[]){
 					execl("resta2","ls","-al",NULL);
 				}else if(ptr[3] == '*'){
 					execl("multiplicacion2","ls","-al",NULL);
+				}else if(ptr[3] == '*'){
+					execl("traspuesta","ls","-al",NULL);
 				}
-				free(matrizA);
+				/*free(matrizA);
 				free(matrizB);
-				free(temp);
+				free(temp);*/
 			}else {
 				close(pipefd1[ESCRIBIR]); //solo puede leer en pipefd1
 				close(pipefd2[LEER]); //solo puede escribir en pipefd2
@@ -1562,7 +1563,10 @@ int main(int argc, char* argv[]){
 				//agregar validaciones de tamaño
 				//Escribir la matriz 1 y matriz 2
 				write(pipefd2[ESCRIBIR],&cantidad,sizeof(int));
-				write(pipefd2[ESCRIBIR],temp,sizeof(int)*cantidad);
+
+				for(k=0;k<cantidad;k++){
+					write(pipefd2[ESCRIBIR],&temp[k],sizeof(int));
+				}
 				//Leer la matriz resultado
 				read(pipefd1[LEER],&cantidad,sizeof(int));
 				
@@ -1703,9 +1707,7 @@ int main(int argc, char* argv[]){
 			}
 		
 		}else if(strlen(buffer2)==7 && buffer2[1] == '=' && buffer2[2] == 't' && buffer2[3] == 'r' && buffer2[4] == 'a' && buffer2[5] == 'n' && buffer2[6] == 's'){
-			//
-			//0 1 2 3 4 5 6 7 8
-			//A = t r a n s   A 
+			
 			pipe(pipefd1);
 			pipe(pipefd2);
 			pid = fork();
@@ -1713,18 +1715,12 @@ int main(int argc, char* argv[]){
 
 			if (pid == 0) {
 
-				/*int cantidadH,i,j;
-				int* temp = malloc(sizeof(int));
-				int* matrizA = malloc(sizeof(int));*/
-
 				close(pipefd1[LEER]); //Solo puede escribir en pipefd1
 				close(pipefd2[ESCRIBIR]); //solo puede leer en pipefd2
 
 				dup2(pipefd1[ESCRIBIR],STDOUT_FILENO);
 				dup2(pipefd2[LEER],STDIN_FILENO);
 				execl("traspuesta","ls","-all",NULL);
-				//free(matrizA);
-				//free(temp);
 
 			}else{
 				close(pipefd1[ESCRIBIR]); //solo puede leer en pipefd1
@@ -1955,7 +1951,10 @@ int main(int argc, char* argv[]){
 				//agregar validaciones de tamaño
 				//Escribir la matriz 1 y matriz 2
 				write(pipefd2[ESCRIBIR],&cantidad,sizeof(int));
-				write(pipefd2[ESCRIBIR],temp,sizeof(int)*cantidad);
+
+				for(k=0;k<cantidad;k++){
+					write(pipefd2[ESCRIBIR],&temp[k],sizeof(int));
+				}
 				//Leer la matriz resultado
 				read(pipefd1[LEER],&cantidad,sizeof(int));
 				
@@ -1969,7 +1968,7 @@ int main(int argc, char* argv[]){
 					B = (int*) malloc(sizeof(int)*cantidad);
 					free(B);
 					int* B = (int*) malloc(sizeof(int)*cantidad);
-					for(k =0;k<cantidad;k++) read(pipefd1[LEER],B+k,sizeof(int));
+					for(k=0;k<cantidad;k++) read(pipefd1[LEER],B+k,sizeof(int));
 				}else if(ptr[cont] == 'C'){
 					C = (int*) malloc(sizeof(int)*cantidad);
 					free(C);
