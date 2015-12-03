@@ -9,7 +9,7 @@ int verificar(char* entrada){
 	if((archivoEntrada = fopen(entrada,"r"))==NULL){
 		return 0;
 	}
-	close(archivoEntrada);
+	//close(archivoEntrada);
 	return 1;
 }
 
@@ -64,6 +64,20 @@ void mostrarMatriz(int* matriz){
 				printf("%d ",matriz[i]);
 			if((i%matriz[1])==1) printf("\n");
 		}
+	}
+}
+
+int* copiarMatriz(int* matriz){
+	if (matriz==NULL){
+		return NULL;
+	}else{
+		int cantidad = matriz[0]*matriz[1]+2;
+		int* copia = malloc(sizeof(int)*cantidad);
+		int i;
+		for(i=0;i<cantidad;i++){
+			copia[i] = matriz[i];
+		}
+		return copia;
 	}
 }
 

@@ -6,4 +6,6 @@ void escribirMatriz(int* matriz, char* nombre);
 void mostrarMatriz(int* matriz);
 void borrarMatriz(int* matriz);
 int verificar(char* entrada);
+int* copiarMatriz(int* matriz);
+
 #endif
