@@ -1174,7 +1174,7 @@ int main(int argc, char* argv[]){
 			else{
 				printf("Error: Falta parámetro de entrada \nUso: clear <Nombre matriz>\n");
 			}
-		}else if(strlen(ptr)==5){
+		}else if(strlen(ptr)==5 || ptr[3] == '*'){
 
 			pipe(pipefd1);
 			pipe(pipefd2);
@@ -1182,10 +1182,6 @@ int main(int argc, char* argv[]){
 			cont = 1;
 
 			if (pid == 0) {
-				/*int cantidadH,i,j;
-				int* temp = malloc(sizeof(int));
-				int* matrizA = malloc(sizeof(int));
-				int* matrizB = malloc(sizeof(int));*/
 
 				close(pipefd1[LEER]); //Solo puede escribir en pipefd1
 				close(pipefd2[ESCRIBIR]); //solo puede leer en pipefd2
@@ -1196,20 +1192,19 @@ int main(int argc, char* argv[]){
 					execl("suma2","ls","-al",NULL);
 				}else if(ptr[3] == '-'){
 					execl("resta2","ls","-al",NULL);
+				}else if((ptr[3] == '*') && (ptr[4] == '0' || ptr[4] == '1' || ptr[4] == '2' || ptr[4] == '3' || ptr[4] == '4' || ptr[4] == '5' || ptr[4] == '6' || ptr[4] == '7' || ptr[4] == '8' || ptr[4] == '9')){
+					execl("multiplicacion2_c","ls","-al",NULL);
 				}else if(ptr[3] == '*'){
 					execl("multiplicacion2","ls","-al",NULL);
-				}else if(ptr[3] == '*'){
-					execl("traspuesta","ls","-al",NULL);
 				}
-				/*free(matrizA);
-				free(matrizB);
-				free(temp);*/
+
 			}else {
 				close(pipefd1[ESCRIBIR]); //solo puede leer en pipefd1
 				close(pipefd2[LEER]); //solo puede escribir en pipefd2
 				int * temp;
 				int cantidad = 0;
-				int k,l;
+				int k,l, constante;
+				int mul_c = 0;
 				cont = 2;
 				bandera = 0;
 				while(cont<5){
@@ -1552,7 +1547,14 @@ int main(int argc, char* argv[]){
 								temp[k]=Z[k-l];
 							}
 						}
+					}else if( bandera == 1 && (ptr[4] == '0' || ptr[4] == '1' || ptr[4] == '2' || ptr[4] == '3' || ptr[4] == '4' || ptr[4] == '5' || ptr[4] == '6' || ptr[4] == '7' || ptr[4] == '8' || ptr[4] == '9')){
+						mul_c = 1;
+						ptr = strtok( buffer2, "*" );
+						ptr = strtok( NULL, "\n");
+						constante = atoi(ptr);
+						ptr = strtok( buffer2, "\n" );
 					}
+
 					cont = cont + 2;
 					if(cont == 6 && bandera == 0){
 						bandera = 1;
@@ -1560,9 +1562,14 @@ int main(int argc, char* argv[]){
 						temp = malloc(sizeof(int)*cantidad);
 					}
 				}
+				
 				//agregar validaciones de tamaño
 				//Escribir la matriz 1 y matriz 2
 				write(pipefd2[ESCRIBIR],&cantidad,sizeof(int));
+
+				if(mul_c==1){
+					write(pipefd2[ESCRIBIR],&constante,sizeof(int));
+				}
 
 				for(k=0;k<cantidad;k++){
 					write(pipefd2[ESCRIBIR],&temp[k],sizeof(int));
